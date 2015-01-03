@@ -13,7 +13,10 @@ defmodule Geom do
   25.132741228718345
 
   iex> Geom.area(:rectangle, -3, 4)
-  ** (FunctionClauseError) no function clause matching in Geom.area/3
+  0
+
+  iex> Geom.area(:matt, 2, 4)
+  0
 
   """
 
@@ -29,4 +32,7 @@ defmodule Geom do
     :math.pi * x * y
   end
 
+  def area(_, _, _) do
+    0
+  end
 end
