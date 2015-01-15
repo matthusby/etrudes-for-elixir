@@ -24,16 +24,13 @@ defmodule Geom do
     area(shape, x, y)
   end
 
-  defp area(:rectangle, x, y) when x >= 0 and y >= 0 do
-    x * y
-  end
-
-  defp area(:triangle, x, y) when x >= 0 and y >= 0 do
-    ( x * y ) / 2
-  end
-
-  defp area(:ellipse, x, y) when x >= 0 and y >= 0 do
-    :math.pi * x * y
+  defp area(shape, x, y) when x >= 0 and y >= 0 do
+    case shape do
+      :rectangle -> x * y
+      :triangle -> ( x * y ) / 2
+      :ellipse -> :math.pi * x * y
+      _ -> 0
+    end
   end
 
   defp area(_, _, _) do
