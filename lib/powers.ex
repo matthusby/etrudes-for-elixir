@@ -18,19 +18,27 @@ defmodule Powers do
   0.125
   """
 
-  def my_raise(_x, 0) do
-    1
-  end
-
   def my_raise(x, 1) do
     x
   end
 
-  def my_raise(x, y) when y > 1 do
-    x * my_raise(x, y - 1)
+  def my_raise(_x, 0) do
+    1
   end
 
-  def my_raise(x, y) do
-    1.0 / my_raise(x, abs(y))
+  def my_raise(x, y) when y > 0 do
+    my_raise(x, y, 1)
+  end
+
+  def my_raise(x, y) when y < 0 do
+    1.0 / my_raise(x, abs(y), 1)
+  end
+
+  def my_raise(_x, 0, acc) do
+    acc
+  end
+
+  def my_raise(x, y, acc) do
+    my_raise(x, y - 1, x * acc)
   end
 end
