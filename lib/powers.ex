@@ -18,6 +18,21 @@ defmodule Powers do
   0.125
   """
 
+  def nth_root(x, n) do
+    nth_root(x, n, x / 2.0)
+  end
+
+  def nth_root(x, n, a) do
+    f = my_raise(a, n) - x
+    fPrime = n * my_raise(a, n - 1)
+    next = a - f / fPrime
+    if(a - next > 0.000000001) do
+      IO.puts "Current guess: #{next}"
+      nth_root(x, n, next)
+    else
+      next
+    end
+  end
   def my_raise(x, 1) do
     x
   end
